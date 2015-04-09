@@ -1,0 +1,13 @@
+<h2>Hello Rails!</h2>
+
+<%=link_to 'new a course' , new_course_path%>
+<%=link_to ' course list' , courses_path%>
+
+<%= form_tag courses_path,method: 'get' do %>
+class name<%= text_field_tag  :name%>
+class teacher<%=text_field_tag :teacher%>
+classroom<%=text_field_tag :classroom%>
+class time<%=text_field_tag :time%>
+class credit<%=text_field_tag :credit%>
+<%= submit_tag "Search"%>
+<%end%>
