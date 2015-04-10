@@ -1,22 +1,25 @@
 class CoursesController < ApplicationController
-	def index
+
+
+	def  index
 		@course = Course.all
-		if params[:name].present?
-			@courses=@courses.where("name like?","%#{params[:name]}%")
+		if  params[ :name].present?
+			@course = @course.where( "name like ?" , " %#{params[ :name]}%" )
 		end
-		if params[:teacher].present?
-			@courses=@courses.where("teacher like?","%#{params[:teacher]}%")
+		if params[ :teacher].present?
+			@course = @course.where("teacher like ?"," %#{params[ :teacher]}%")
 		end
 		if params[:time].present?
-			@courses=@courses.where("time like?","%#{params[:time]}%")	
+			@course = @course.where("time like?","%#{params[ :time]}%")
 		end	
+
 	end
 
-	def new
+	def  new
 		@course = Course.new	
 	end
 
-	def create
+	def  create
 		@course=Course.new(course_params)
 		if @course.save
 			redirect_to  root_path
@@ -29,11 +32,11 @@ class CoursesController < ApplicationController
 		@course = Course.find(params[:id])
 	end
 
-	def edit
+	def  edit
 		@course = Course.find(params[:id])
 	end
 
-	def update
+	def  update
 		@course = Course.find(params[:id])
 		if @course.update(course_params)
 			redirect_to root_path
